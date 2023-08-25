@@ -3,6 +3,7 @@ import json
 import random
 import time
 from ast import literal_eval as make_tuple
+#多进程并发编程
 from multiprocessing import Process, Queue
 
 import numpy as np
@@ -35,6 +36,7 @@ class PredictJob:
 
 class JobWorker(Process):
     def __init__(self, pending_q: Queue) -> None:
+        #调用父类构造函数
         super().__init__()
         self.pending_q = pending_q
         X, self.Y = mnist_reader.load_mnist(path=DATA_DIR, kind='train')
